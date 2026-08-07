@@ -571,7 +571,141 @@ Released under the MIT license: http://jsbin.mit-license.org
 
       
 
-    <script>
+      <!-- ===== PREGUNTA 4 ===== -->
+      <div class="screen" data-step="4" data-type="single">
+        <div class="q-number">Pregunta 4 de 14</div>
+        <div class="q-title">
+          ¿Cuál es tu relación con el adulto mayor?
+        </div>
+        <div class="q-instruction">👉 Elige una opción</div>
+
+        <div class="options" id="opts-4">
+          <div class="choice single" onclick="selectSingle(this,'4')">
+            <span class="box">●</span>Hijo/a
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'4')">
+            <span class="box">●</span>Nieto/a
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'4')">
+            <span class="box">●</span>Yerno/Nuera
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'4')">
+            <span class="box">●</span>Sobrino, primo, hermano
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'4')">
+            <span class="box">●</span>Cuidador/a
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'4')">
+            <span class="box">●</span>Amigo
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn btn-back" onclick="goBack()">Atrás</button>
+          <button class="btn btn-next" id="next-4" disabled onclick="goNext()">
+            Siguiente →
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== PREGUNTA 5 ===== -->
+      <div class="screen" data-step="5" data-type="single">
+        <div class="q-number">Pregunta 5 de 14</div>
+        <div class="q-title">
+          ¿En qué rango de edad te encuentras?
+        </div>
+        <div class="q-instruction">👉 Elige una opción</div>
+
+        <div class="options" id="opts-5">
+          <div class="choice single" onclick="selectSingle(this,'5')">
+            <span class="box">●</span>20–30 años
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'5')">
+            <span class="box">●</span>31–40 años
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'5')">
+            <span class="box">●</span>41–50 años
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'5')">
+            <span class="box">●</span>51–60 años
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'5')">
+            <span class="box">●</span>61 años en adelante
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn btn-back" onclick="goBack()">Atrás</button>
+          <button class="btn btn-next" id="next-5" disabled onclick="goNext()">
+            Siguiente →
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== PREGUNTA 6 ===== -->
+      <div class="screen" data-step="6" data-type="single">
+        <div class="q-number">Pregunta 6 de 14</div>
+        <div class="q-title">
+          ¿Cuánto tiempo aproximadamente dedicas a la semana ayudando a tus adultos mayores con este tipo de trámites?
+        </div>
+        <div class="q-instruction">👉 Elige una opción</div>
+
+        <div class="options" id="opts-6">
+          <div class="choice single" onclick="selectSingle(this,'6')">
+            <span class="box">●</span>Menos de 30 minutos
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'6')">
+            <span class="box">●</span>30 minutos a 1 hora
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'6')">
+            <span class="box">●</span>1 a 2 horas
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'6')">
+            <span class="box">●</span>2 a 4 horas
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'6')">
+            <span class="box">●</span>Más de 4 horas
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn btn-back" onclick="goBack()">Atrás</button>
+          <button class="btn btn-next" id="next-6" disabled onclick="goNext()">
+            Siguiente →
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== PREGUNTA 7 ===== -->
+      <div class="screen" data-step="7" data-type="single">
+        <div class="q-number">Pregunta 7 de 14</div>
+        <div class="q-title">
+          ¿En qué momento sueles ayudarles?
+        </div>
+        <div class="q-instruction">👉 Elige una opción</div>
+
+        <div class="options" id="opts-7">
+          <div class="choice single" onclick="selectSingle(this,'7')">
+            <span class="box">●</span>Durante mi horario laboral
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'7')">
+            <span class="box">●</span>Al finalizar mi trabajo o los fines de semana
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'7')">
+            <span class="box">●</span>Cuando puedo desplazarme hasta su casa
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'7')">
+            <span class="box">●</span>Siempre que lo necesitan
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <button class="btn btn-back" onclick="goBack()">Atrás</button>
+          <button class="btn btn-next" id="next-7" disabled onclick="goNext()">
+            Siguiente →
+          </button>
+        </div>
+      </div><script>
       const TOTAL_STEPS = 14;
       let currentStep = 0; // 0 = welcome
       const answers = {};
