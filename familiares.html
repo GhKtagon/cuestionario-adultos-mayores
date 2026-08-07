@@ -442,13 +442,33 @@ Released under the MIT license: http://jsbin.mit-license.org
 
       <!-- ===== PREGUNTAS DE SELECCIÓN ÚNICA (SÍ/NO) ===== -->
       <!-- P1 - SINGLE CHOICE: SÍ/NO -->
+            <!-- ===== INTRODUCCIÓN ===== -->
+      <div class="screen active" data-step="0">
+        <div class="hero">
+          <h1>¿Cuánto tiempo y preocupación te generan los trámites digitales de tus adultos mayores?</h1>
+          <p>
+            Esta encuesta es anónima y llenarla toma menos de 3 minutos.
+            Queremos comprender, en tu calidad de familiar, cuánto tiempo,
+            esfuerzo y dedicación te supone ayudar a tus adultos mayores con
+            sus trámites digitales de salud, pagos y servicios.
+          </p>
+        </div>
+
+        <div class="nav-row" style="justify-content:center">
+          <button class="btn btn-next" onclick="goNext()">
+            Comenzar →
+          </button>
+        </div>
+      </div>
+
+      <!-- ===== PREGUNTA 1 ===== -->
       <div class="screen" data-step="1" data-type="single">
         <div class="q-number">Pregunta 1 de 14</div>
         <div class="q-title">
-          ¿Utilizas el celular para hacer trámites de salud y realizar pagos por
-          internet?
+          ¿Actualmente ayudas a algún adulto mayor realizando sus trámites digitales?
         </div>
-        <div class="q-instruction">👉 Selecciona una opción</div>
+        <div class="q-instruction">👉 Elige una opción</div>
+
         <div class="options" id="opts-1">
           <div class="choice single" onclick="selectSingle(this,'1')">
             <span class="box">●</span>Sí
@@ -457,6 +477,7 @@ Released under the MIT license: http://jsbin.mit-license.org
             <span class="box">●</span>No
           </div>
         </div>
+
         <div class="nav-row">
           <button class="btn btn-back" onclick="goBack()">Atrás</button>
           <button class="btn btn-next" id="next-1" disabled onclick="goNext()">
@@ -465,19 +486,29 @@ Released under the MIT license: http://jsbin.mit-license.org
         </div>
       </div>
 
-      <!-- P2 - SINGLE CHOICE: SÍ/NO -->
+      <!-- ===== PREGUNTA 2 ===== -->
       <div class="screen" data-step="2" data-type="single">
         <div class="q-number">Pregunta 2 de 14</div>
-        <div class="q-title">¿Te parece fácil hacer trámites por internet?</div>
-        <div class="q-instruction">👉 Selecciona una opción</div>
+        <div class="q-title">
+          ¿A cuántos adultos mayores ayudas con sus trámites digitales?
+        </div>
+        <div class="q-instruction">👉 Elige una opción</div>
+
         <div class="options" id="opts-2">
           <div class="choice single" onclick="selectSingle(this,'2')">
-            <span class="box">●</span>Sí
+            <span class="box">●</span>1
           </div>
           <div class="choice single" onclick="selectSingle(this,'2')">
-            <span class="box">●</span>No
+            <span class="box">●</span>2
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'2')">
+            <span class="box">●</span>3
+          </div>
+          <div class="choice single" onclick="selectSingle(this,'2')">
+            <span class="box">●</span>Más de 3
           </div>
         </div>
+
         <div class="nav-row">
           <button class="btn btn-back" onclick="goBack()">Atrás</button>
           <button class="btn btn-next" id="next-2" disabled onclick="goNext()">
@@ -485,83 +516,51 @@ Released under the MIT license: http://jsbin.mit-license.org
           </button>
         </div>
       </div>
-<div class="screen" data-step="12" data-type="single"> <div class="q-number">Pregunta 12 de 16</div> </div>
-      <div class="q-title">¿Qué trámite de salud te resulta más difícil hacer por internet?</div><div class="q-instruction">👉 Elige solo una opción</div><div class="options" id="opts-12s"><div class="choice single" onclick="selectSingle(this,'12s')"><span class="box">●</span>Pedir citas médicas</div><div class="choice single" onclick="selectSingle(this,'12s')"><span class="box">●</span>Solicitar autorizaciones</div><div class="choice single" onclick="selectSingle(this,'12s')"><span class="box">●</span>Descargar resultados de exámenes</div><div class="choice single" onclick="selectSingle(this,'12s')"><span class="box">●</span>Gestionar medicamentos o fórmulas</div><div class="choice single" onclick="selectSingle(this,'12s')"><span class="box">●</span>Ninguno de estos</div></div><div class="nav-row"><button class="btn btn-back" onclick="goBack()">Atrás</button><button class="btn btn-next" id="next-12s" disabled onclick="goNext()">Siguiente →</button></div></div><!-- ===== PREGUNTAS DE SELECCIÓN MÚLTIPLE ===== -->
-      <!-- P3 - MULTI CHOICE (SIN "TODAS LAS ANTERIORES") -->
+
+      <!-- ===== PREGUNTA 3 ===== -->
       <div class="screen" data-step="3" data-type="multi">
         <div class="q-number">Pregunta 3 de 14</div>
         <div class="q-title">
-          De esta lista, señala lo que te resulta más complicado al hacer
-          trámites por internet
+          ¿Con qué tipo de trámites les ayudas habitualmente?
         </div>
         <div class="q-instruction">
-          👉 Señala las casillas, puedes elegir varias respuestas
+          👉 Puedes elegir varias opciones
         </div>
+
         <div class="options" id="opts-3">
           <div class="choice multi" onclick="toggleMulti(this,'3')">
-            <span class="box"
-              ><svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="white"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                /></svg></span
-            >Saber los pasos que debo seguir en la pantalla
+            <span class="box">✓</span>Pedir citas médicas
           </div>
+
           <div class="choice multi" onclick="toggleMulti(this,'3')">
-            <span class="box"
-              ><svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="white"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                /></svg></span
-            >Ver bien las letras o botones
+            <span class="box">✓</span>Escanear órdenes y fórmulas para solicitar autorizaciones de medicamentos u otros procedimientos
           </div>
+
           <div class="choice multi" onclick="toggleMulti(this,'3')">
-            <span class="box"
-              ><svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="white"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                /></svg></span
-            >Recordar contraseñas o claves
+            <span class="box">✓</span>Realizar compras de vales de servicio o pagos relacionados con su seguro de salud o EPS
           </div>
+
           <div class="choice multi" onclick="toggleMulti(this,'3')">
-            <span class="box"
-              ><svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="white"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                /></svg></span
-            >Tener que llenar cosas, algunas con tiempo límite
+            <span class="box">✓</span>Uso del teléfono celular y WhatsApp
           </div>
+
           <div class="choice multi" onclick="toggleMulti(this,'3')">
-            <span class="box"
-              ><svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="white"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                /></svg></span
-            >Tocar bien la pantalla
+            <span class="box">✓</span>Uso del computador y envío o recepción de correos electrónicos
+          </div>
+
+          <div class="choice multi" onclick="toggleMulti(this,'3')">
+            <span class="box">✓</span>Realizar todo tipo de pagos y transferencias
+          </div>
+
+          <div class="choice multi" onclick="toggleMulti(this,'3')">
+            <span class="box">✓</span>Otros
           </div>
         </div>
+
         <div class="helper-text" id="helper-3">
           Elige al menos una opción para continuar
         </div>
+
         <div class="nav-row">
           <button class="btn btn-back" onclick="goBack()">Atrás</button>
           <button class="btn btn-next" id="next-3" disabled onclick="goNext()">
@@ -570,422 +569,12 @@ Released under the MIT license: http://jsbin.mit-license.org
         </div>
       </div>
 
-      <!-- ===== PREGUNTAS DE SELECCIÓN ÚNICA ===== -->
-      <!-- P4 - SINGLE CHOICE -->
-      <div class="screen" data-step="4" data-type="single">
-        <div class="q-number">Pregunta 4 de 14</div>
-        <div class="q-title">
-          ¿Qué sientes cuando no puedes hacer algo por internet tú solo/a?
-        </div>
-        <div class="q-instruction">👉 Elige solo una opción</div>
-        <div class="options" id="opts-4">
-          <div class="choice single" onclick="selectSingle(this,'4')">
-            <span class="box">●</span>😠 Frustración y rabia
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'4')">
-            <span class="box">●</span>😔 Tristeza y desánimo
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'4')">
-            <span class="box">●</span>🙂 No me afecta
-          </div>
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-4" disabled onclick="goNext()">
-            Siguiente →
-          </button>
-        </div>
-      </div>
-
-      <!-- P5 - SINGLE CHOICE: SÍ/NO -->
-      <div class="screen" data-step="5" data-type="single">
-        <div class="q-number">Pregunta 5 de 14</div>
-        <div class="q-title">
-          ¿Sientes vergüenza al pedir ayuda para hacer trámites por internet?
-        </div>
-        <div class="q-instruction">👉 Selecciona una opción</div>
-        <div class="options" id="opts-5">
-          <div class="choice single" onclick="selectSingle(this,'5')">
-            <span class="box">●</span>Sí
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'5')">
-            <span class="box">●</span>No
-          </div>
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-5" disabled onclick="goNext()">
-            Siguiente →
-          </button>
-        </div>
-      </div>
-
-      <!-- P6 - SINGLE CHOICE: SÍ/NO (PREGUNTA MODIFICADA) -->
-      <div class="screen" data-step="6" data-type="single">
-        <div class="q-number">Pregunta 6 de 14</div>
-        <div class="q-title">
-          ¿A menudo crees que puedes borrar información o provocar daños irreparables si tocas el botón equivocado?
-        </div>
-        <div class="q-instruction">👉 Selecciona una opción</div>
-        <div class="options" id="opts-6">
-          <div class="choice single" onclick="selectSingle(this,'6')">
-            <span class="box">●</span>Sí
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'6')">
-            <span class="box">●</span>No
-          </div>
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-6" disabled onclick="goNext()">
-            Siguiente →
-          </button>
-        </div>
-      </div>
-
-      <!-- P7 - SINGLE CHOICE: SÍ/NO -->
-      <div class="screen" data-step="7" data-type="single">
-        <div class="q-number">Pregunta 7 de 14</div>
-        <div class="q-title">
-          ¿Te preocupa que alguien te engañe por internet?
-        </div>
-        <div class="q-instruction">👉 Selecciona una opción</div>
-        <div class="options" id="opts-7">
-          <div class="choice single" onclick="selectSingle(this,'7')">
-            <span class="box">●</span>Sí
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'7')">
-            <span class="box">●</span>No
-          </div>
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-7" disabled onclick="goNext()">
-            Siguiente →
-          </button>
-        </div>
-      </div>
-
-      <!-- P8 - SINGLE CHOICE: SÍ/NO (PREGUNTA MODIFICADA) -->
-      <div class="screen" data-step="8" data-type="single">
-        <div class="q-number">Pregunta 8 de 14</div>
-        <div class="q-title">
-          ¿Piensas que es tarde ya para aprender a manejar la tecnología?
-        </div>
-        <div class="q-instruction">👉 Selecciona una opción</div>
-        <div class="options" id="opts-8">
-          <div class="choice single" onclick="selectSingle(this,'8')">
-            <span class="box">●</span>Sí
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'8')">
-            <span class="box">●</span>No
-          </div>
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-8" disabled onclick="goNext()">
-            Siguiente →
-          </button>
-        </div>
-      </div>
-
-      <!-- P9 - SINGLE CHOICE: SÍ/NO (PREGUNTA MODIFICADA) -->
-      <div class="screen" data-step="9" data-type="single">
-        <div class="q-number">Pregunta 9 de 14</div>
-        <div class="q-title">
-          ¿Crees que este mundo tecnológico está pensado solo para la gente joven?
-        </div>
-        <div class="q-instruction">👉 Selecciona una opción</div>
-        <div class="options" id="opts-9">
-          <div class="choice single" onclick="selectSingle(this,'9')">
-            <span class="box">●</span>Sí
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'9')">
-            <span class="box">●</span>No
-          </div>
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-9" disabled onclick="goNext()">
-            Siguiente →
-          </button>
-        </div>
-      </div>
-
-      <!-- P10 - SINGLE CHOICE: SÍ/NO (PREGUNTA MODIFICADA) -->
-      <div class="screen" data-step="10" data-type="single">
-        <div class="q-number">Pregunta 10 de 14</div>
-        <div class="q-title">
-          ¿Antes de que todo pudiera hacerse por internet, podías realizar tus
-          trámites por ti mismo?
-        </div>
-        <div class="q-instruction">👉 Selecciona una opción</div>
-        <div class="options" id="opts-10">
-          <div class="choice single" onclick="selectSingle(this,'10')">
-            <span class="box">●</span>Sí
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'10')">
-            <span class="box">●</span>No
-          </div>
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-10" disabled onclick="goNext()">
-            Siguiente →
-          </button>
-        </div>
-      </div>
-
-      <!-- P11 - SINGLE CHOICE (PREGUNTA MODIFICADA) -->
-      <div class="screen" data-step="11" data-type="single">
-        <div class="q-number">Pregunta 11 de 14</div>
-        <div class="q-title">
-          Si pudieras elegir un servicio para hacer tus trámites, ¿cuál preferirías?
-        </div>
-        <div class="q-instruction">👉 Elige solo una opción</div>
-        <div class="options" id="opts-11">
-          <div class="choice single" onclick="selectSingle(this,'11')">
-            <span class="box">●</span>Un servicio de acompañamiento que me guíe paso a paso por video llamada
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'11')">
-            <span class="box">●</span>Un servicio telefónico con personas que hagan los trámites por mí
-          </div>
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-11" disabled onclick="goNext()">
-            Siguiente →
-          </button>
-        </div>
-      </div>
-
-      <!-- ===== PREGUNTAS DE SELECCIÓN MÚLTIPLE ===== -->
-      <!-- P12 - MULTI CHOICE (SIMPLIFICADA: 5 opciones) -->
-      <div class="screen" data-step="12" data-type="multi">
-        <div class="q-number">Pregunta 12 de 14</div>
-        <div class="q-title">
-          De la siguiente lista, elige las características que te gustaría que tuviera ese servicio
-        </div>
-        <div class="q-instruction">
-          👉 Señala las casillas, puedes elegir varias respuestas
-        </div>
-        <div class="options" id="opts-12">
-          <div class="choice multi" onclick="toggleMulti(this,'12')">
-            <span class="box"
-              ><svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="white"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                /></svg></span
-            >Que pueda hablar con personas
-          </div>
-          <div class="choice multi" onclick="toggleMulti(this,'12')">
-            <span class="box"
-              ><svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="white"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                /></svg></span
-            >Que sea por teléfono, sin escribir
-          </div>
-          <div class="choice multi" onclick="toggleMulti(this,'12')">
-            <span class="box"
-              ><svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="white"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                /></svg></span
-            >Que pueda confiar en que mis datos están seguros
-          </div>
-          <div class="choice multi" onclick="toggleMulti(this,'12')">
-            <span class="box"
-              ><svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="white"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                /></svg></span
-            >Que tenga un precio razonable
-          </div>
-          <div class="choice multi" onclick="toggleMulti(this,'12')">
-            <span class="box"
-              ><svg viewBox="0 0 24 24" fill="none">
-                <path
-                  d="M5 13l4 4L19 7"
-                  stroke="white"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                /></svg></span
-            >Que me recuerden las cosas
-          </div>
-        </div>
-        <div class="helper-text" id="helper-12">
-          Elige al menos una opción para continuar
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-12" disabled onclick="goNext()">
-            Siguiente →
-          </button>
-        </div>
-      </div>
-
-      <!-- ===== PREGUNTA ESPECIAL: HABILIDADES (SÍ/NO A LA DERECHA) ===== -->
-      <!-- P13 - SPECIAL: Skills with SI/NO buttons on the right -->
-      <div class="screen" data-step="13" data-type="skills">
-        <div class="q-number">Pregunta 13 de 14</div>
-        <div class="q-title">
-          Nos gustaría saber un poco más acerca de tus habilidades tecnológicas
-        </div>
-        <div class="q-instruction">
-          👉 Señala SI o NO según sea tu caso
-        </div>
-
-        <div class="group-title">💻 Con el computador</div>
-        <div id="opts-13-pc"></div>
-
-        <div class="group-title">📱 Con el celular</div>
-        <div id="opts-13-cel"></div>
-
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-13" disabled onclick="goNext()">
-            Siguiente →
-          </button>
-        </div>
-      </div>
-
-      <!-- ===== PREGUNTAS DE SELECCIÓN ÚNICA ===== -->
-      <!-- P14 - SINGLE CHOICE -->
-      <div class="screen" data-step="14" data-type="single">
-        <div class="q-number">Pregunta 14 de 14</div>
-        <div class="q-title">
-          Para terminar, ¿en qué rango de edad te encuentras?
-        </div>
-        <div class="q-instruction">👉 Elige solo una opción</div>
-        <div class="options" id="opts-14">
-          <div class="choice single" onclick="selectSingle(this,'14')">
-            <span class="box">●</span>50 - 60 años
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'14')">
-            <span class="box">●</span>61 - 70 años
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'14')">
-            <span class="box">●</span>71 - 80 años
-          </div>
-          <div class="choice single" onclick="selectSingle(this,'14')">
-            <span class="box">●</span>Mayor de 81 años
-          </div>
-        </div>
-        <div class="nav-row">
-          <button class="btn btn-back" onclick="goBack()">Atrás</button>
-          <button class="btn btn-next" id="next-14" disabled onclick="goNext()">
-            Finalizar →
-          </button>
-        </div>
-      </div>
-
-      <!-- CIERRE -->
-      <div class="center-screen" id="screen-end">
-        <div class="emoji-big">🙏</div>
-        <div class="end-title">¡Gracias por tu tiempo y tu amabilidad!</div>
-        <div class="end-sub">
-          Tus respuestas son de gran valor para nosotros
-        </div>
-        <div class="end-form">
-          <label for="endName">Tu nombre (opcional)</label>
-          <input type="text" id="endName" placeholder="Escribe tu nombre" />
-          <label for="endPhone">Tu número de teléfono (opcional)</label>
-          <input type="tel" id="endPhone" placeholder="Escribe tu número" />
-          <div class="discount-tag">
-            🎁 Déjanos tus datos y en breve recibirás noticias nuestras, además
-            de un 20% de descuento en la contratación del Pack Esencial de
-            nuestro servicio.
-          </div>
-          <button class="send-btn" onclick="finishSurvey()">
-            Enviar mis datos
-          </button>
-          <button class="skip-link" onclick="finishSurvey()">
-            Prefiero no dejar mis datos
-          </button>
-        </div>
-      </div>
-    </div>
+      
 
     <script>
-      const TOTAL_STEPS = 16;
+      const TOTAL_STEPS = 14;
       let currentStep = 0; // 0 = welcome
       const answers = {};
-
-      // ===== SKILLS DATA PARA PREGUNTA 13 =====
-      const skillItemsPC = [
-        ["Escribir y enviar correos electrónicos", "pc_correos"],
-        ["Escribir, modificar, guardar e imprimir documentos", "pc_documentos"],
-        ["Escanear, guardar y subir documentos a una página web", "pc_escanear"],
-        ["Contestar una videollamada", "pc_videollamadas"]
-      ];
-
-      const skillItemsCel = [
-        ["Escribir, enviar, reenviar y eliminar mensajes por WhatsApp", "cel_whatsapp"],
-        ["Tomar y enviar fotos por WhatsApp", "cel_fotos"],
-        ["Agregar un nuevo contacto a WhatsApp", "cel_contactos"],
-        ["Poner el celular en silencio", "cel_silencio"],
-        ["Programar alarmas o recordatorios", "cel_recordatorios"],
-        ["Leer u oír noticias", "cel_noticias"],
-        ["Desplazarse de una pantalla abierta a otra", "cel_pantallas"],
-        ["Realizar gestiones a través de tu aplicación de salud", "cel_salud"],
-        ["Escanear un código QR para ver el menú de un restaurante o pagar una cuenta", "cel_qr"],
-        ["Realizar pagos y consultas de saldos o movimientos bancarios", "cel_banca"]
-      ];
-
-      function buildSkillGroup(containerId, items) {
-        const c = document.getElementById(containerId);
-        items.forEach(([text, id]) => {
-          const row = document.createElement('div');
-          row.className = 'skill-row';
-          row.innerHTML = `
-            <div class="skill-text">${text}</div>
-            <div class="skill-choices">
-              <button class="skill-btn" data-id="${id}" data-value="Si" onclick="selectSkill(this, '${id}', 'Si')">Sí</button>
-              <button class="skill-btn" data-id="${id}" data-value="No" onclick="selectSkill(this, '${id}', 'No')">No</button>
-            </div>`;
-          c.appendChild(row);
-          answers[id] = 'No';
-        });
-      }
-
-      buildSkillGroup('opts-13-pc', skillItemsPC);
-      buildSkillGroup('opts-13-cel', skillItemsCel);
-
-      function selectSkill(el, id, value) {
-        // Buscar todos los botones para este skill
-        const skillRow = el.closest('.skill-row');
-        const siblings = skillRow.querySelectorAll('.skill-btn');
-        
-        // Desseleccionar todos
-        siblings.forEach(btn => btn.classList.remove('selected'));
-        
-        // Seleccionar el que fue clickeado
-        el.classList.add('selected');
-        
-        // Guardar respuesta
-        answers[id] = value;
-        
-        // Habilitar botón siguiente
-        document.getElementById('next-13').disabled = false;
-      }
 
       function updateProgress(step) {
         const wrap = document.getElementById('progressWrap');
