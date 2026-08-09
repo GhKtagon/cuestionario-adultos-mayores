@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encuesta familiares adultos mayores</title>
+  <style>
+    :root{
+      --bg:#F5F7FB;
+      --card:#FFFFFF;
+      --text:#0F172A;
+      --muted:#64748B;
+      --primary:#1E3A5F;
+      --primary-soft:#EEF4FF;
+      --border:#E2E8F0;
+      --success:#0F766E;
+      --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+      display:flex;
+      justify-content:center;
+      padding:20px;
+    }
+    .app{
+      width:100%;
+      max-width:640px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .screen{display:none;padding:28px}
+    .screen.active{display:block}
+    .badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+    .badge{
+      font-size:13px;
+      font-weight:700;
+      color:var(--primary);
+      background:var(--primary-soft);
+      border:1px solid #D8E3FF;
+      padding:8px 12px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .badge.green{
+      background:#ECFDF5;
+      border-color:#CFEEDB;
+      color:#065F46;
+    }
+    h1{
+      font-size:42px;
+      line-height:1.15;
+      margin:0 0 14px;
+      color:var(--primary);
+    }
+    .lead{
+      font-size:18px;
+      line-height:1.6;
+      color:#334155;
+      margin:0 0 24px;
+    }
+    .stats{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 28px}
+    .stat{
+      flex:1 1 120px;
+      background:#F8FAFC;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:16px;
+      text-align:center;
+    }
+    .stat strong{display:block;font-size:18px;color:var(--text)}
+    .stat span{font-size:13px;color:var(--muted)}
+    .start-btn,.next-btn{
+      width:100%;
+      border:none;
+      border-radius:18px;
+      background:var(--primary);
+      color:#fff;
+      font-size:18px;
+      font-weight:800;
+      padding:18px 20px;
+      cursor:pointer;
+    }
+    .back-btn{
+      flex:1;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:#fff;
+      color:var(--text);
+      font-size:16px;
+      font-weight:700;
+      padding:16px;
+      cursor:pointer;
+    }
+    .next-btn[disabled]{opacity:.45;cursor:not-allowed}
+    .thanks{
+      margin:18px 0 22px;
+      font-size:22px;
+      font-weight:800;
+      color:var(--primary);
+    }
+    .footnote{
+      margin-top:18px;
+      padding-left:6px;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.5;
+    }
+    .progress-wrap{padding:18px 28px 0}
+    .progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .progress-top span{font-size:14px;font-weight:700;color:var(--muted)}
+    .track{
+      width:100%;
+      height:10px;
+      background:#E5E7EB;
+      border-radius:999px;
+      overflow:hidden;
+    }
+    .fill{
+      height:100%;
+      width:0%;
+      background:var(--primary);
+      transition:width .25s ease;
+    }
+    .q-number{
+      font-size:14px;
+      font-weight:800;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:12px;
+    }
+    .q-title{
+      font-size:28px;
+      line-height:1.25;
+      margin:0 0 10px;
+      color:var(--text);
+    }
+    .q-help{
+      color:var(--muted);
+      margin-bottom:28px;
+      line-height:1.5;
+    }
+    .options{display:flex;flex-direction:column;gap:18px}
+    .choice{
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:20px;
+      cursor:pointer;
+      transition:.18s ease;
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      background:#fff;
+    }
+    .choice:hover{border-color:#CBD5E1;transform:translateY(-1px)}
+    .choice.selected{
+      border-color:var(--primary);
+      background:var(--primary-soft);
+      box-shadow:0 0 0 3px rgba(30,58,95,.08);
+    }
+    .dot,.check{
+      width:22px;height:22px;flex:0 0 22px;margin-top:2px;
+      border:2px solid #94A3B8;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:12px;color:#fff;
+    }
+    .check{border-radius:6px}
+    .choice.selected .dot,.choice.selected .check{
+      background:var(--primary);
+      border-color:var(--primary);
+    }
+    .choice-text{font-size:17px;line-height:1.45;font-weight:600;color:var(--text)}
+    .nav{display:flex;gap:14px;margin-top:34px}
+    .next-btn{flex:1}
+    .end-title{font-size:32px;color:var(--primary);margin:0 0 8px;text-align:center}
+    .end-sub{color:var(--muted);text-align:center;margin-bottom:22px}
+    .form{display:flex;flex-direction:column;gap:18px}
+    .form label{font-size:14px;font-weight:700;color:#334155}
+    .form input{
+      width:100%;
+      padding:14px 16px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      font-size:16px;
+    }
+    .discount{
+      background:#F8FAFC;
+      border:1px dashed #CBD5E1;
+      border-radius:16px;
+      padding:16px;
+      color:#334155;
+      line-height:1.5;
+      font-size:14px;
+    }
+    .center{text-align:center}
+    @media (max-width:560px){
+      body{padding:14px}
+      .screen{padding:22px}
+      h1{font-size:30px}
+      .q-title{font-size:24px}
+      .nav{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="card">
+      <div id="welcome" class="screen active">
+        <div class="badges"><div class="badge green">🛡️ Encuesta 100% anónima</div><div class="badge">📋 14 preguntas</div><div class="badge">🕒 3 min</div></div>
+
+        <h1>¿Cuánta preocupación te generan los trámites digitales de tus adultos mayores?</h1>
+
+        <p class="lead">
+          Queremos comprender cuánto tiempo, esfuerzo y dedicación te supone ayudar a tus adultos mayores con sus trámites de salud, pagos y servicios digitales.
+        </p>
+
+        <div class="thanks">¡Gracias por echarnos una mano!</div>
+
+        <button class="start-btn" onclick="startSurvey()">Comenzar →</button>
+
+        <div class="footnote">
+          *No solicitamos información personal para responder a la encuesta.
+        </div>
+      </div>
+
+      <div id="survey" style="display:none;">
+        <div class="progress-wrap">
+          <div class="progress-top">
+            <span id="progressText">Pregunta 1 de 14</span>
+            <span id="progressPct">7%</span>
+          </div>
+          <div class="track"><div class="fill" id="fill"></div></div>
+        </div>
+
+        <div id="screens"></div>
+      </div>
+
+      <div id="end" class="screen">
+        <h2 class="end-title">¡Gracias por participar!</h2>
+        <p class="end-sub">Tu opinión es muy valiosa para nosotros.</p>
+
+        <div class="form">
+          <label>Nombre (opcional)</label>
+          <input type="text" id="endName" placeholder="Tu nombre" />
+
+          <label>Teléfono (opcional)</label>
+          <input type="tel" id="endPhone" placeholder="Tu teléfono" />
+
+          <label>Correo electrónico (opcional)</label>
+          <input type="email" id="endEmail" placeholder="Tu correo" />
+
+          <div class="discount">
+            Déjanos tus datos y recibirás información prioritaria sobre el lanzamiento del servicio, además de un <strong>20% de descuento en la contratación del pack esencial</strong>.
+          </div>
+
+          <button class="start-btn" onclick="finish()">Enviar datos</button>
+          <div class="center" style="margin-top:10px;">
+            <button class="back-btn" onclick="finish()">Prefiero no dejar mis datos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+const questions = [
+  {type:'single', title:'¿Actualmente ayudas a algún adulto mayor realizando sus trámites digitales?', options:['Sí','No']},
+  {type:'single', title:'¿A cuántos adultos mayores ayudas con sus trámites digitales?', options:['1','2','3','Más de 3']},
+  {type:'multi', title:'¿Con qué tipo de trámites les ayudas habitualmente?', help:'Puedes elegir varias opciones', options:['Pedir citas médicas','Escanear órdenes y fórmulas para solicitar autorizaciones de medicamentos u otros procedimientos','Realizar compras de vales de servicio o pagos relacionados con su seguro de salud o EPS','Uso del teléfono celular y WhatsApp','Uso del computador y envío o recepción de correos electrónicos','Realizar todo tipo de pagos y transferencias','Otros']},
+  {type:'single', title:'¿Cuál es tu relación con el adulto mayor?', options:['Hijo/a','Nieto/a','Yerno/Nuera','Sobrino, primo, hermano','Cuidador/a','Amigo']},
+  {type:'single', title:'¿En qué rango de edad te encuentras?', options:['20–30 años','31–40 años','41–50 años','51–60 años','61 años en adelante']},
+  {type:'single', title:'¿Cuánto tiempo aproximadamente dedicas a la semana ayudando a tus adultos mayores con este tipo de trámites?', options:['Menos de 30 minutos','30 minutos a 1 hora','1 a 2 horas','2 a 4 horas','Más de 4 horas']},
+  {type:'single', title:'¿En qué momento sueles ayudarles?', options:['Durante mi horario laboral','Al finalizar mi trabajo o los fines de semana','Cuando puedo desplazarme hasta su casa','Siempre que lo necesitan']},
+  {type:'single', title:'¿Qué tan estresante te resulta tener que resolver estos trámites en medio de tus propias rutinas?', options:['Poco estresante','Moderadamente estresante','Muy estresante']},
+  {type:'single', title:'¿Alguna vez has tenido que interrumpir tu trabajo, reuniones u otras actividades para poder ayudarle a tu adulto mayor?', options:['Sí, muchas veces','Sí, algunas veces','Rara vez','Nunca']},
+  {type:'multi', title:'Incluso con habilidades para desenvolverte en un mundo digitalizado, ¿qué sientes cuando no logras resolver un trámite?', help:'Puedes elegir varias opciones', options:['Desespero e impotencia.','Rabia porque eso significa tener que volver a iniciar procesos largos, robotizados y con menús interminables.','Frustración porque aunque recurra a canales alternos, si fallan, sé que es muy difícil conseguir hablar con alguna persona de atención al cliente.','Incredulidad porque a veces parece que la digitalización, en lugar de facilitarnos la interacción con empresas y servicios, nos la complica.','Nada, no me afecta.']},
+  {type:'single', title:'Si existiera un servicio seguro y confiable que gestionara en tu lugar los trámites digitales de tus adultos mayores y te permitiera un amplio nivel de control y vigilancia sobre los mismos, ¿qué tan útil sería para ti?', options:['Nada útil','Poco útil','Muy útil']},
+  {type:'single', title:'¿Cómo te gustaría que tu adulto mayor recibiera ayuda con sus trámites digitales?', options:['Con un servicio donde lo guíen por videollamada para que pueda realizar sus trámites acompañado.','Con un servicio telefónico, pensado para ellos, con personal cualificado que realice los trámites que necesiten.','Con un servicio donde les enseñen a hacer todos sus trámites por sí mismos.']},
+  {type:'single', title:'¿Estarías dispuesto a pagar por un servicio profesional y seguro capaz de solucionar este problema?', options:['Sí','Tal vez','No']},
+  {type:'single', title:'¿Qué valor mensual considerarías razonable pagar por un servicio así?', options:['$100.000 a $150.000','$151.000 a $200.000','$201.000 a $250.000']}
+];
+
+let current = 0;
+const answers = {};
+
+function startSurvey(){
+  document.getElementById('welcome').classList.remove('active');
+  document.getElementById('survey').style.display='block';
+  buildScreens();
+  show(0);
+}
+
+function buildScreens(){
+  const wrap = document.getElementById('screens');
+  wrap.innerHTML = '';
+
+  questions.forEach((q,i)=>{
+    const s = document.createElement('div');
+    s.className = 'screen';
+    s.id = 'q'+i;
+
+    let options = '';
+    q.options.forEach((opt,idx)=>{
+      options += `
+      <div class="choice" data-index="${idx}" onclick="${q.type==='single' ? `selectSingle(${i},${idx})` : `toggleMulti(${i},${idx})`}">
+        <div class="${q.type==='single' ? 'dot' : 'check'}">${q.type==='multi' ? '✓' : ''}</div>
+        <div class="choice-text">${opt}</div>
+      </div>`;
+    });
+
+    s.innerHTML = `
+      <div class="q-number">Pregunta ${i+1} de ${questions.length}</div>
+      <h2 class="q-title">${q.title}</h2>
+      ${q.help ? `<div class="q-help">${q.help}</div>` : ''}
+      <div class="options">${options}</div>
+      <div class="nav">
+        <button class="back-btn" onclick="prev()">Atrás</button>
+        <button class="next-btn" id="next${i}" disabled onclick="next()">${i===questions.length-1 ? 'Finalizar' : 'Continuar'}</button>
+      </div>`;
+    wrap.appendChild(s);
+  });
+}
+
+function show(i){
+  current = i;
+  document.querySelectorAll('#screens .screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('q'+i).classList.add('active');
+
+  const pct = Math.round(((i+1)/questions.length)*100);
+  document.getElementById('fill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `Pregunta ${i+1} de ${questions.length}`;
+  document.getElementById('progressPct').textContent = pct + '%';
+  window.scrollTo(0,0);
+}
+
+function selectSingle(q,opt){
+  answers[q] = questions[q].options[opt];
+  const screen = document.getElementById('q'+q);
+  screen.querySelectorAll('.choice').forEach(c=>c.classList.remove('selected'));
+  screen.querySelector(`.choice[data-index="${opt}"]`).classList.add('selected');
+  document.getElementById('next'+q).disabled = false;
+}
+
+function toggleMulti(q,opt){
+  const screen = document.getElementById('q'+q);
+  const choice = screen.querySelector(`.choice[data-index="${opt}"]`);
+  choice.classList.toggle('selected');
+
+  const selected = [...screen.querySelectorAll('.choice.selected')].map(c=>questions[q].options[Number(c.dataset.index)]);
+  answers[q] = selected;
+
+  document.getElementById('next'+q).disabled = selected.length === 0;
+}
+
+function next(){
+  if(current === questions.length-1){
+    document.getElementById('survey').style.display='none';
+    document.getElementById('end').classList.add('active');
+  }else{
+    show(current+1);
+  }
+}
+
+function prev(){
+  if(current > 0) show(current-1);
+}
+
+async function finish(){
+  const data = {
+    respuestas: answers,
+    nombre: document.getElementById('endName').value.trim(),
+    telefono: document.getElementById('endPhone').value.trim(),
+    correo: document.getElementById('endEmail').value.trim()
+  };
+
+  const end = document.getElementById('end');
+
+  end.innerHTML = `
+    <div class="screen active">
+      <h2 class="end-title">Enviando encuesta...</h2>
+      <p class="end-sub">Por favor espera unos segundos.</p>
+    </div>`;
+
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbxJI7npON2-uaqa5Z2zck-B77m5SHy9_relnrWmbBUy7zmV0Y0UmZJDei-FqdjQ6X8HWg/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    end.innerHTML = `
+      <div class="screen active">
+        <h2 class="end-title">¡Gracias por participar!</h2>
+        <p class="end-sub">Tus respuestas han sido registradas correctamente.</p>
+        <div class="center">
+          <button class="start-btn" onclick="window.location.href='https://ghktagon.github.io/cuestionario-adultos-mayores/familiares.html'">Cerrar</button>
+        </div>
+      </div>`;
+  } catch (error) {
+    end.innerHTML = `
+      <div class="screen active">
+        <h2 class="end-title">No se pudo enviar la encuesta</h2>
+        <p class="end-sub">Revisa tu conexión a internet e inténtalo de nuevo.</p>
+        <div class="center">
+          <button class="start-btn" onclick="window.location.href='https://ghktagon.github.io/cuestionario-adultos-mayores/familiares.html'">Reintentar</button>
+        </div>
+      </div>`;
+  }
+}
+</script>
+</body>
+</html>
