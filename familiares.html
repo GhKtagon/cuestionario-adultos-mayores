@@ -252,30 +252,16 @@
         <p class="end-sub">Tu opinión es muy valiosa para nosotros.</p>
 
         <div class="form">
-          <label>Sexo (opcional)</label>
-          <select id="endSexo" style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:14px;font-size:16px;background:#fff;">
-            <option value="">Selecciona una opción</option>
-            <option value="Mujer">Mujer</option>
-            <option value="Hombre">Hombre</option>
-            <option value="Prefiero no decirlo">Prefiero no decirlo</option>
-          </select>
+      <label>Antes de terminar, indícanos por favor tu sexo:</label>
+      <select id="endSexo" style="width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:14px;font-size:16px;background:#fff;">
+        <option value="">Prefiero no decirlo</option>
+        <option value="Mujer">Mujer</option>
+        <option value="Hombre">Hombre</option>
+        <option value="No definido">No definido</option>
+      </select>
 
-          <label>Nombre (opcional)</label>
-          <input type="text" id="endName" placeholder="Tu nombre" />
+      <button class="start-btn" onclick="finish()">Finalizar encuesta</button>
 
-          <label>Teléfono (opcional)</label>
-          <input type="tel" id="endPhone" placeholder="Tu teléfono" />
-
-          <label>Correo electrónico (opcional)</label>
-          <input type="email" id="endEmail" placeholder="Tu correo" />
-
-          <div class="discount">
-            Déjanos tus datos y recibirás información prioritaria sobre el lanzamiento del servicio, además de un <strong>20% de descuento en la contratación del pack esencial</strong>.
-          </div>
-
-          <button class="start-btn" onclick="finish()">Enviar datos</button>
-          <div class="center" style="margin-top:10px;">
-            <button class="back-btn" onclick="finish()">Prefiero no dejar mis datos</button>
           </div>
         </div>
       </div>
@@ -387,12 +373,9 @@ function prev(){
 
 async function finish(){
   const data = {
-    respuestas: answers,
-    sexo: document.getElementById('endSexo').value,
-    nombre: document.getElementById('endName').value.trim(),
-    telefono: document.getElementById('endPhone').value.trim(),
-    correo: document.getElementById('endEmail').value.trim()
-  };
+  respuestas: answers,
+  sexo: document.getElementById('endSexo').value
+};
 
   const end = document.getElementById('end');
 
